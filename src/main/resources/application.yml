@@ -1,0 +1,8 @@
+micronaut:
+  server:
+    port: ${SERVER_PORT:8080}
+samlet:
+  token: ${DC_TOKEN}
+  api_url: ${IOGR_API_URL:https://api.iogr.app}
+  web_url: ${IOGR_WEB_URL:https://www.iogr.app}
+  api_version: ${IOGR_API_VERSION:v1}
