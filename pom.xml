@@ -22,7 +22,7 @@
         <micronaut.version>4.2.1</micronaut.version>
         <micronaut.runtime>netty</micronaut.runtime>
         <micronaut.aot.enabled>false</micronaut.aot.enabled>
-        <exec.mainClass>de.suborskar.samlet.Main</exec.mainClass>
+        <exec.mainClass>de.suborskar.samlet.Application</exec.mainClass>
     </properties>
 
     <repositories>
