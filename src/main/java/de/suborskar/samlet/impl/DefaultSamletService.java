@@ -3,11 +3,13 @@ package de.suborskar.samlet.impl;
 import de.suborskar.samlet.SamletService;
 import de.suborskar.samlet.configuration.SamletConfiguration;
 import de.suborskar.samlet.iogr.IOGRClient;
-import de.suborskar.samlet.iogr.IOGRRequest;
 import de.suborskar.samlet.iogr.IOGRResponse;
+import de.suborskar.samlet.parser.ParserResult;
+import de.suborskar.samlet.parser.ParsingError;
+import de.suborskar.samlet.parser.QueryParser;
 import jakarta.inject.Singleton;
 
-import java.util.Random;
+import java.util.stream.Collectors;
 
 @Singleton
 public class DefaultSamletService implements SamletService {
@@ -15,25 +17,21 @@ public class DefaultSamletService implements SamletService {
 
     private SamletConfiguration samletConfiguration;
 
-    private Random random = new Random();
+    private QueryParser queryParser;
 
-    public String getSeed(String query){
-        return null;
+    public DefaultSamletService(final IOGRClient iogrClient, final SamletConfiguration samletConfiguration, final QueryParser queryParser) {
+        this.iogrClient = iogrClient;
+        this.samletConfiguration = samletConfiguration;
+        this.queryParser = queryParser;
     }
 
-    private String getSeedLink() {
-        IOGRRequest req = new IOGRRequest();
-        req.setSeed(generateRandomSeedValue());
-        req.setDifficulty(1);
-        req.setStatues("4");
-        IOGRResponse resp = iogrClient.getSeed(req);
+    public String getSeed(final String query) {
+        final ParserResult parserResult = queryParser.parse(query);
+        if (parserResult.hasErrors()) {
+            return "Nice try dodongo!\n"
+                    + parserResult.errors().stream().map(ParsingError::msg).collect(Collectors.joining("\n"));
+        }
+        final IOGRResponse resp = iogrClient.getSeed(parserResult.request());
         return samletConfiguration.getWebUrl() + "/permalink/" + resp.getPermalinkId();
-    }
-
-    private long generateRandomSeedValue() {
-        final Long max = 2147483648L;
-        final int min = 0;
-
-        return random.nextLong() * (max - min + 1) + min;
     }
 }
