@@ -7,5 +7,5 @@ import java.util.List;
 public interface FlagParser {
     boolean canParse(String flag);
 
-    void parse(String flag, IOGRRequest.Builder builder, List<ParsingError> errors);
+    void parse(String flag,  IOGRRequest.Builder builder, List<ParsingError> errors);
 }

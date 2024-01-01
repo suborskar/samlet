@@ -2,6 +2,7 @@ package de.suborskar.samlet.parser;
 
 import de.suborskar.samlet.Constants;
 import de.suborskar.samlet.iogr.IOGRRequest;
+import io.micronaut.core.util.StringUtils;
 import jakarta.inject.Singleton;
 
 import java.util.ArrayList;
@@ -18,8 +19,10 @@ public class QueryParser {
         final List<ParsingError> errors = new ArrayList<>();
         final IOGRRequest.Builder iogrRequestBuilder = new IOGRRequest.Builder();
         final String q = query.trim().startsWith(Constants.SEED_COMMAND)?query.trim().substring(Constants.SEED_COMMAND.length()).trim() : query.trim();
-        for (final String flag : q.split(" ")) {
-            parseFlag(flag, iogrRequestBuilder, errors);
+        if (StringUtils.isNotEmpty(q)) {
+            for (final String flag : q.split(" ")) {
+                parseFlag(flag, iogrRequestBuilder, errors);
+            }
         }
         return new ParserResult(iogrRequestBuilder.build(), errors);
     }
