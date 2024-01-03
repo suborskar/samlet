@@ -16,9 +16,9 @@ public class StartingLocationFlagParser extends MappedFlagParser {
             "S(s)", SAFE,
             "S(u)", UNSAFE,
             "S(f)", FORCED_UNSAFE,
-            "save", SAFE,
-            "unsave", UNSAFE,
-            "UNSAVE", FORCED_UNSAFE
+            "safe", SAFE,
+            "unsafe", UNSAFE,
+            "UNSAFE", FORCED_UNSAFE
     );
 
 
