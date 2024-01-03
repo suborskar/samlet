@@ -6,7 +6,7 @@ import java.util.Random;
 
 @Serdeable
 public class IOGRRequest {
-    private final static Random random = new Random();
+    private static final Random random = new Random();
 
     private final long seed;
     private final int goal;
@@ -176,108 +176,108 @@ public class IOGRRequest {
             return this;
         }
 
-        public Builder withGoal(final int goal) {
+        public Builder goal(final int goal) {
             this.goal = goal;
             return this;
         }
 
-        public Builder withLogic(final int logic) {
+        public Builder logic(final int logic) {
             this.logic = logic;
             return this;
         }
 
-        public Builder withDifficulty(final int difficulty) {
+        public Builder difficulty(final int difficulty) {
             this.difficulty = difficulty;
             return this;
         }
 
-        public Builder withStartLocation(final int startLocation) {
+        public Builder startLocation(final int startLocation) {
             this.startLocation = startLocation;
             return this;
         }
 
-        public Builder withStatueReq(final int statueReq) {
+        public Builder statueReq(final int statueReq) {
             this.statueReq = statueReq;
             return this;
         }
 
-        public Builder withStatues(final String statues) {
+        public Builder statues(final String statues) {
             this.statues = statues;
             return this;
         }
 
-        public Builder withAllowGlitches(final boolean allowGlitches) {
+        public Builder allowGlitches(final boolean allowGlitches) {
             this.allowGlitches = allowGlitches;
             return this;
         }
 
-        public Builder withBossShuffle(final boolean bossShuffle) {
+        public Builder bossShuffle(final boolean bossShuffle) {
             this.bossShuffle = bossShuffle;
             return this;
         }
 
-        public Builder withDungeonShuffle(final boolean dungeonShuffle) {
+        public Builder dungeonShuffle(final boolean dungeonShuffle) {
             this.dungeonShuffle = dungeonShuffle;
             return this;
         }
 
-        public Builder withEnemizer(final int enemizer) {
+        public Builder enemizer(final int enemizer) {
             this.enemizer = enemizer;
             return this;
         }
 
-        public Builder withEntranceShuffle(final int entranceShuffle) {
+        public Builder entranceShuffle(final int entranceShuffle) {
             this.entranceShuffle = entranceShuffle;
             return this;
         }
 
-        public Builder withFirebird(final boolean firebird) {
+        public Builder firebird(final boolean firebird) {
             this.firebird = firebird;
             return this;
         }
 
-        public Builder withFluteless(final boolean fluteless) {
+        public Builder fluteless(final boolean fluteless) {
             this.fluteless = fluteless;
             return this;
         }
 
-        public Builder withGenerateRaceRom(final boolean generateRaceRom) {
+        public Builder generateRaceRom(final boolean generateRaceRom) {
             this.generateRaceRom = generateRaceRom;
             return this;
         }
 
-        public Builder withHidewithtings(final boolean hideSettings) {
+        public Builder hideSettings(final boolean hideSettings) {
             this.hideSettings = hideSettings;
             return this;
         }
 
-        public Builder withOhko(final boolean ohko) {
+        public Builder ohko(final boolean ohko) {
             this.ohko = ohko;
             return this;
         }
 
-        public Builder withOpenMode(final boolean openMode) {
+        public Builder openMode(final boolean openMode) {
             this.openMode = openMode;
             return this;
         }
 
-        public Builder withOverworldShuffle(final boolean overworldShuffle) {
+        public Builder overworldShuffle(final boolean overworldShuffle) {
             this.overworldShuffle = overworldShuffle;
             return this;
         }
 
-        public Builder withRedJewelMadness(final boolean redJewelMadness) {
+        public Builder redJewelMadness(final boolean redJewelMadness) {
             this.redJewelMadness = redJewelMadness;
             return this;
         }
 
-        public Builder withZ3Mode(final boolean z3Mode) {
+        public Builder z3Mode(final boolean z3Mode) {
             this.z3Mode = z3Mode;
             return this;
         }
 
         private long generateRandomSeedValue() {
-            final Long max = 2147483648L;
+            final long max = 2147483648L;
             final int min = 0;
 
             return random.nextLong() * (max - min + 1) + min;
