@@ -11,7 +11,7 @@ import java.util.List;
 public class FlutelessFlagParser implements FlagParser {
     @Override
     public boolean canParse(final String flag) {
-        return "f".equals(flag) || "fluteless".equalsIgnoreCase(flag);
+        return "fl".equals(flag) || "fluteless".equalsIgnoreCase(flag);
     }
 
     @Override
